@@ -1,0 +1,9 @@
+%% -*- erlang -*-
+{application, proxy,
+ [{description, "proxy"},
+  {vsn, "0.1"},
+  {modules, []},
+  {registered, []},
+  {mod, {'proxy_app', []}},
+  {env, []},
+  {applications, [kernel, stdlib]}]}.

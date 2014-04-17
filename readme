@@ -1,0 +1,24 @@
+1.每次有slg_server启动时要保证本模块处于启动状态
+2.配置：
+	%% 数据库迁移模块配置.
+	{database, "slg_gm_proxy"}. %%网管代理的database名
+	{hostname, "localhost"}.    %%网管代理的数据库主机域名或ip
+	{port, 3306}.		    %%网管代理的数据库端口
+	{username, "root"}.	    %%网管代理的数据库用户名
+	{password, "tap4fun"}.	    %%网管代理的数据库密码
+
+	{gate_way_ip, "121.199.51.37"}.  %% 网关ip地址
+	{gate_way_port, 8080}.		 %% 网关端口
+3.配置node名
+	在config/node_name.conf里加入node名：slg_gm_proxy@IP
+	IP:必须是slg_server能够ping通的ip地址
+	例：slg_gm_proxy@121.199.51.39
+4.修改数据库相关信息：
+	在script/create-databases.sh里面所有的“mysql -uroot -p123456”，
+	修改为 “mysql -u数据库用户名 -p数据库密码 ”
+4.slg_server服务器配置：
+	在slg_server的server.conf里配置proxy_ip,比如:
+	{gm_proxy_ip, "121.199.51.39"}.	%%后面的ip即gm代理的ip
+5.slg_server的node配置:
+	在slg_server的node配置文件node_name.conf 里，配置类似一下的Node名：
+	slg-server@121.199.51.38	%% ip用启动本模块的server能ping通的ip
