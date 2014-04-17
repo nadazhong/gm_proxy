@@ -1,0 +1,11 @@
+sh.dump
+ebin/*
+deps/*
+/ebin
+.project
+.settings/
+.DS_Store
+config/proxy.conf
+config/node_name.conf
+script/creat-databases.sh
+data/*
